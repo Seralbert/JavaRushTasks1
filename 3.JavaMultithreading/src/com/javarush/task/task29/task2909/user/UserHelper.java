@@ -26,12 +26,11 @@ public class UserHelper{
         return (userAnya.getAge() + userRoma.getAge() + userUra.getAge()) / 3;
     }
 
-    public double calculateRate(AtomicDouble base, int age, boolean hasWork, boolean hasHouse) {
-        double znach = base.get();
-        znach +=  age / 100;
-        znach = znach * (hasWork ? 1.1 : 0.9);
-        znach = znach * (hasHouse ? 1.1 : 0.9);
-        return znach;
+    public int calculateRate(AtomicInteger base, int age, boolean hasWork, boolean hasHouse) {
+        double tmp = base.get();
+        tmp += age / 100;
+        tmp = tmp*(hasWork?1.1:0.9)*(hasHouse?1.1:0.9);
+        return (int) tmp;
     }
 
     public String getBossName(User user) {
